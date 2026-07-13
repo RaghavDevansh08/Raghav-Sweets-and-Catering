@@ -1,1 +1,74 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Payment submitted | Raghav Sweets and Catering</title><link rel="stylesheet" href="css/style.css"></head><body><div class="topbar">UPI payment details submitted</div><header class="site-header"><div class="container header-inner"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Raghav Sweets and Catering<small>Sweets & Namkeen</small></span></a></div></header><main><section class="section container"><div class="panel" style="max-width:720px;margin:auto;text-align:center"><div style="font-size:4rem">✓</div><h1>Payment details submitted</h1><p>Your UPI transaction reference has been recorded. The shop will verify the payment before confirming preparation or delivery.</p><p><strong data-order-number></strong></p><div data-order-status class="notice">Checking order status…</div><p><a class="btn" href="products.html">Continue shopping</a></p></div></section></main><script src="js/config.js"></script><script>const id=new URLSearchParams(location.search).get('order');document.querySelector('[data-order-number]').textContent=id||'Order unavailable';if(id){fetch(`${window.STORE_CONFIG.apiBaseUrl}/api/orders/${encodeURIComponent(id)}`).then(r=>r.json()).then(o=>{const labels={PAYMENT_SUBMITTED:'Payment submitted — awaiting shop verification',PAYMENT_VERIFIED:'Payment verified — order confirmed',PAYMENT_REJECTED:'Payment could not be verified — contact the shop',PREPARING:'Your order is being prepared',READY:'Your order is ready',COMPLETED:'Order completed',CANCELLED:'Order cancelled'};document.querySelector('[data-order-status]').textContent=`${labels[o.status]||o.status} · Total ₹${o.total}`}).catch(()=>document.querySelector('[data-order-status]').textContent='Contact the shop with your order number if the status is not shown.')}else document.querySelector('[data-order-status]').textContent='Order number missing.';</script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Payment submitted | Raghav Sweets and Catering</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">UPI payment details submitted</div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">K</span
+          ><span
+            >Raghav Sweets and Catering<small>Sweets & Namkeen</small></span
+          ></a
+        >
+      </div>
+    </header>
+    <main>
+      <section class="section container">
+        <div
+          class="panel"
+          style="max-width: 720px; margin: auto; text-align: center"
+        >
+          <div style="font-size: 4rem">✓</div>
+          <h1>Payment details submitted</h1>
+          <p>
+            Your UPI transaction reference has been recorded. The shop will
+            verify the payment before confirming preparation or delivery.
+          </p>
+          <p><strong data-order-number></strong></p>
+          <div data-order-status class="notice">Checking order status…</div>
+          <p><a class="btn" href="products.html">Continue shopping</a></p>
+        </div>
+      </section>
+    </main>
+    <script src="js/config.js"></script>
+    <script>
+      const id = new URLSearchParams(location.search).get("order");
+      document.querySelector("[data-order-number]").textContent =
+        id || "Order unavailable";
+      if (id) {
+        fetch(
+          `${window.STORE_CONFIG.apiBaseUrl}/api/orders/${encodeURIComponent(id)}`,
+        )
+          .then((r) => r.json())
+          .then((o) => {
+            const labels = {
+              PAYMENT_SUBMITTED:
+                "Payment submitted — awaiting shop verification",
+              PAYMENT_VERIFIED: "Payment verified — order confirmed",
+              PAYMENT_REJECTED:
+                "Payment could not be verified — contact the shop",
+              PREPARING: "Your order is being prepared",
+              READY: "Your order is ready",
+              COMPLETED: "Order completed",
+              CANCELLED: "Order cancelled",
+            };
+            document.querySelector("[data-order-status]").textContent =
+              `${labels[o.status] || o.status} · Total ₹${o.total}`;
+          })
+          .catch(
+            () =>
+              (document.querySelector("[data-order-status]").textContent =
+                "Contact the shop with your order number if the status is not shown."),
+          );
+      } else
+        document.querySelector("[data-order-status]").textContent =
+          "Order number missing.";
+    </script>
+  </body>
+</html>

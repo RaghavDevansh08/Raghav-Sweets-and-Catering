@@ -1,1 +1,186 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bulk Orders & Catering | Raghav Sweets and Catering</title><meta name="description" content="Request bulk sweets and catering packages."><link rel="stylesheet" href="css/style.css"></head><body><div class="topbar">Fresh sweets daily · Local delivery in Bulandshahr · Call +91 8279500000</div><header class="site-header"><div class="container header-inner"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Raghav Sweets and Catering<small>Sweets & Namkeen</small></span></a><button class="menu-btn" aria-label="Open menu">☰</button><nav class="nav"><a href="index.html">Home</a><a href="products.html">Shop</a><a href="festival-specials.html">Festival Boxes</a><a href="catering.html">Bulk Orders</a><a href="checkout.html">Checkout</a><button class="cart-btn" data-open-cart>Cart <span data-cart-count>0</span></button></nav></div></header><main><section class="page-title"><div class="container"><span class="eyebrow">Events & institutions</span><h1>Bulk orders made simpler</h1><p>Share your requirements and open a pre-filled WhatsApp enquiry for weddings, pujas, offices, schools and community events.</p></div></section><section class="section container"><div class="checkout-layout"><form class="panel" id="checkout-form" onsubmit="event.preventDefault(); const f=Object.fromEntries(new FormData(this)); const msg=`Hello Raghav Sweets and Catering, I need a bulk-order quote.%0AName: ${f.name}%0APhone: ${f.phone}%0AOccasion: ${f.occasion}%0AGuests/Quantity: ${f.quantity}%0AEvent date: ${f.date}%0ABudget: ${f.budget}%0ARequirements: ${f.notes}`; window.open('https://wa.me/918279500000?text='+msg,'_blank')"><h2>Request a quote</h2><div class="form-grid"><div class="field"><label>Name</label><input name="name" required></div><div class="field"><label>10-digit phone</label><input name="phone" pattern="[0-9]{10}" required></div><div class="field"><label>Occasion</label><select name="occasion" required><option>Wedding</option><option>Festival gifting</option><option>Puja / ceremony</option><option>Corporate event</option><option>Other</option></select></div><div class="field"><label>Event date</label><input type="date" name="date"></div><div class="field"><label>Guests / quantity</label><input name="quantity" placeholder="e.g. 200 boxes"></div><div class="field"><label>Approx. budget</label><input name="budget" placeholder="e.g. ₹50,000"></div><div class="field full"><label>Requirements</label><textarea name="notes" placeholder="Products, box size, delivery location, special packaging..."></textarea></div><div class="field full"><button class="btn full" type="submit">Send enquiry on WhatsApp</button></div></div></form><aside class="panel"><h2>What we can arrange</h2><div class="summary-row"><span>Wedding sweet boxes</span><strong>✓</strong></div><div class="summary-row"><span>Return gifts</span><strong>✓</strong></div><div class="summary-row"><span>Corporate gifting</span><strong>✓</strong></div><div class="summary-row"><span>Puja & ceremony packs</span><strong>✓</strong></div><div class="summary-row"><span>Bulk namkeen packs</span><strong>✓</strong></div><div class="notice">For accurate pricing, confirm products, weight, packaging, date and delivery location with the shop.</div></aside></div></section></main><footer><div class="container footer-grid"><div><h3>Raghav Sweets and Catering</h3><p>Traditional mithai, fresh namkeen and thoughtful gifting from Bulandshahr.</p></div><div><h4>Visit</h4><p>S2, Lakshmi Artiga, KP Road, Laxmi Nagar, Bulandshahr, Uttar Pradesh 203001</p></div><div><h4>Explore</h4><p><a href="products.html">All products</a><br><a href="festival-specials.html">Festival boxes</a><br><a href="catering.html">Bulk orders</a></p></div><div><h4>Contact</h4><p><a data-shop-phone href="tel:+918279500000"><span data-shop-phone-text>+91 8279500000</span></a><br>Open daily until 10 PM</p></div></div><div class="copyright">© 2026 Raghav Sweets and Catering. All rights reserved.</div></footer><div class="drawer-backdrop" data-cart-backdrop></div><aside class="cart-drawer" data-cart-drawer><div class="drawer-head"><h2>Your cart</h2><button data-close-cart aria-label="Close">×</button></div><div data-cart-items></div><div class="drawer-total"><span>Subtotal</span><strong data-cart-total>₹0</strong></div><a class="btn full" href="checkout.html">Proceed to checkout</a><button class="btn outline full" data-close-cart>Continue shopping</button></aside><div class="toast" data-toast></div><script src="js/config.js"></script><script src="js/products.js"></script><script src="js/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bulk Orders & Catering | Raghav Sweets and Catering</title>
+    <meta
+      name="description"
+      content="Request bulk sweets and catering packages."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      Fresh sweets daily · Local delivery in Bulandshahr · Call +91 8279500000
+    </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">K</span
+          ><span
+            >Raghav Sweets and Catering<small>Sweets & Namkeen</small></span
+          ></a
+        ><button class="menu-btn" aria-label="Open menu">☰</button>
+        <nav class="nav">
+          <a href="index.html">Home</a><a href="products.html">Shop</a
+          ><a href="festival-specials.html">Festival Boxes</a
+          ><a href="catering.html">Bulk Orders</a
+          ><a href="checkout.html">Checkout</a
+          ><button class="cart-btn" data-open-cart>
+            Cart <span data-cart-count>0</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <span class="eyebrow">Events & institutions</span>
+          <h1>Bulk orders made simpler</h1>
+          <p>
+            Share your requirements and open a pre-filled WhatsApp enquiry for
+            weddings, pujas, offices, schools and community events.
+          </p>
+        </div>
+      </section>
+      <section class="section container">
+        <div class="checkout-layout">
+          <form
+            class="panel"
+            id="checkout-form"
+            onsubmit="
+              event.preventDefault();
+              const f = Object.fromEntries(new FormData(this));
+              const msg = `Hello Raghav Sweets and Catering, I need a bulk-order quote.%0AName: ${f.name}%0APhone: ${f.phone}%0AOccasion: ${f.occasion}%0AGuests/Quantity: ${f.quantity}%0AEvent date: ${f.date}%0ABudget: ${f.budget}%0ARequirements: ${f.notes}`;
+              window.open('https://wa.me/918279500000?text=' + msg, '_blank');
+            "
+          >
+            <h2>Request a quote</h2>
+            <div class="form-grid">
+              <div class="field">
+                <label>Name</label><input name="name" required />
+              </div>
+              <div class="field">
+                <label>10-digit phone</label
+                ><input name="phone" pattern="[0-9]{10}" required />
+              </div>
+              <div class="field">
+                <label>Occasion</label
+                ><select name="occasion" required>
+                  <option>Wedding</option>
+                  <option>Festival gifting</option>
+                  <option>Puja / ceremony</option>
+                  <option>Corporate event</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Event date</label><input type="date" name="date" />
+              </div>
+              <div class="field">
+                <label>Guests / quantity</label
+                ><input name="quantity" placeholder="e.g. 200 boxes" />
+              </div>
+              <div class="field">
+                <label>Approx. budget</label
+                ><input name="budget" placeholder="e.g. ₹50,000" />
+              </div>
+              <div class="field full">
+                <label>Requirements</label
+                ><textarea
+                  name="notes"
+                  placeholder="Products, box size, delivery location, special packaging..."
+                ></textarea>
+              </div>
+              <div class="field full">
+                <button class="btn full" type="submit">
+                  Send enquiry on WhatsApp
+                </button>
+              </div>
+            </div>
+          </form>
+          <aside class="panel">
+            <h2>What we can arrange</h2>
+            <div class="summary-row">
+              <span>Wedding sweet boxes</span><strong>✓</strong>
+            </div>
+            <div class="summary-row">
+              <span>Return gifts</span><strong>✓</strong>
+            </div>
+            <div class="summary-row">
+              <span>Corporate gifting</span><strong>✓</strong>
+            </div>
+            <div class="summary-row">
+              <span>Puja & ceremony packs</span><strong>✓</strong>
+            </div>
+            <div class="summary-row">
+              <span>Bulk namkeen packs</span><strong>✓</strong>
+            </div>
+            <div class="notice">
+              For accurate pricing, confirm products, weight, packaging, date
+              and delivery location with the shop.
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Raghav Sweets and Catering</h3>
+          <p>
+            Traditional mithai, fresh namkeen and thoughtful gifting from
+            Bulandshahr.
+          </p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <p>
+            S2, Lakshmi Artiga, KP Road, Laxmi Nagar, Bulandshahr, Uttar Pradesh
+            203001
+          </p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <p>
+            <a href="products.html">All products</a><br /><a
+              href="festival-specials.html"
+              >Festival boxes</a
+            ><br /><a href="catering.html">Bulk orders</a>
+          </p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>
+            <a data-shop-phone href="tel:+918279500000"
+              ><span data-shop-phone-text>+91 8279500000</span></a
+            ><br />Open daily until 10 PM
+          </p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 Raghav Sweets and Catering. All rights reserved.
+      </div>
+    </footer>
+    <div class="drawer-backdrop" data-cart-backdrop></div>
+    <aside class="cart-drawer" data-cart-drawer>
+      <div class="drawer-head">
+        <h2>Your cart</h2>
+        <button data-close-cart aria-label="Close">×</button>
+      </div>
+      <div data-cart-items></div>
+      <div class="drawer-total">
+        <span>Subtotal</span><strong data-cart-total>₹0</strong>
+      </div>
+      <a class="btn full" href="checkout.html">Proceed to checkout</a
+      ><button class="btn outline full" data-close-cart>
+        Continue shopping
+      </button>
+    </aside>
+    <div class="toast" data-toast></div>
+    <script src="js/config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

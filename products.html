@@ -1,1 +1,127 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shop Products | Raghav Sweets and Catering</title><meta name="description" content="Browse sweets, namkeen and gift boxes."><link rel="stylesheet" href="css/style.css"></head><body><div class="topbar">Fresh sweets daily · Local delivery in Bulandshahr · Call +91 8279500000</div><header class="site-header"><div class="container header-inner"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Raghav Sweets and Catering<small>Sweets & Namkeen</small></span></a><button class="menu-btn" aria-label="Open menu">☰</button><nav class="nav"><a href="index.html">Home</a><a href="products.html">Shop</a><a href="festival-specials.html">Festival Boxes</a><a href="catering.html">Bulk Orders</a><a href="checkout.html">Checkout</a><button class="cart-btn" data-open-cart>Cart <span data-cart-count>0</span></button></nav></div></header><main><section class="page-title"><div class="container"><span class="eyebrow">Online catalogue</span><h1>Shop sweets & namkeen</h1><p>Search the menu, filter by category and add products to your cart. Prices are editable in one product data file.</p></div></section><section class="section container"><div class="shop-tools"><div class="search-box"><input data-search type="search" placeholder="Search ladoo, kaju katli, namkeen..."></div><div class="filters"><button class="filter-btn active" data-filter="All">All</button><button class="filter-btn" data-filter="Ladoo">Ladoo</button><button class="filter-btn" data-filter="Milk Sweets">Milk sweets</button><button class="filter-btn" data-filter="Bengali & Syrup">Syrup sweets</button><button class="filter-btn" data-filter="Namkeen">Namkeen</button><button class="filter-btn" data-filter="Gift Boxes">Gift boxes</button></div></div><div class="product-grid" data-product-grid></div></section></main><footer><div class="container footer-grid"><div><h3>Raghav Sweets and Catering</h3><p>Traditional mithai, fresh namkeen and thoughtful gifting from Bulandshahr.</p></div><div><h4>Visit</h4><p>S2, Lakshmi Artiga, KP Road, Laxmi Nagar, Bulandshahr, Uttar Pradesh 203001</p></div><div><h4>Explore</h4><p><a href="products.html">All products</a><br><a href="festival-specials.html">Festival boxes</a><br><a href="catering.html">Bulk orders</a></p></div><div><h4>Contact</h4><p><a data-shop-phone href="tel:+918279500000"><span data-shop-phone-text>+91 8279500000</span></a><br>Open daily until 10 PM</p></div></div><div class="copyright">© 2026 Raghav Sweets and Catering. All rights reserved.</div></footer><div class="drawer-backdrop" data-cart-backdrop></div><aside class="cart-drawer" data-cart-drawer><div class="drawer-head"><h2>Your cart</h2><button data-close-cart aria-label="Close">×</button></div><div data-cart-items></div><div class="drawer-total"><span>Subtotal</span><strong data-cart-total>₹0</strong></div><a class="btn full" href="checkout.html">Proceed to checkout</a><button class="btn outline full" data-close-cart>Continue shopping</button></aside><div class="toast" data-toast></div><script src="js/config.js"></script><script src="js/products.js"></script><script src="js/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Shop Products | Raghav Sweets and Catering</title>
+    <meta name="description" content="Browse sweets, namkeen and gift boxes." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      Fresh sweets daily · Local delivery in Bulandshahr · Call +91 8279500000
+    </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">K</span
+          ><span
+            >Raghav Sweets and Catering<small>Sweets & Namkeen</small></span
+          ></a
+        ><button class="menu-btn" aria-label="Open menu">☰</button>
+        <nav class="nav">
+          <a href="index.html">Home</a><a href="products.html">Shop</a
+          ><a href="festival-specials.html">Festival Boxes</a
+          ><a href="catering.html">Bulk Orders</a
+          ><a href="checkout.html">Checkout</a
+          ><button class="cart-btn" data-open-cart>
+            Cart <span data-cart-count>0</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <span class="eyebrow">Online catalogue</span>
+          <h1>Shop sweets & namkeen</h1>
+          <p>
+            Search the menu, filter by category and add products to your cart.
+            Prices are editable in one product data file.
+          </p>
+        </div>
+      </section>
+      <section class="section container">
+        <div class="shop-tools">
+          <div class="search-box">
+            <input
+              data-search
+              type="search"
+              placeholder="Search ladoo, kaju katli, namkeen..."
+            />
+          </div>
+          <div class="filters">
+            <button class="filter-btn active" data-filter="All">All</button
+            ><button class="filter-btn" data-filter="Ladoo">Ladoo</button
+            ><button class="filter-btn" data-filter="Milk Sweets">
+              Milk sweets</button
+            ><button class="filter-btn" data-filter="Bengali & Syrup">
+              Syrup sweets</button
+            ><button class="filter-btn" data-filter="Namkeen">Namkeen</button
+            ><button class="filter-btn" data-filter="Gift Boxes">
+              Gift boxes
+            </button>
+          </div>
+        </div>
+        <div class="product-grid" data-product-grid></div>
+      </section>
+    </main>
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Raghav Sweets and Catering</h3>
+          <p>
+            Traditional mithai, fresh namkeen and thoughtful gifting from
+            Bulandshahr.
+          </p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <p>
+            S2, Lakshmi Artiga, KP Road, Laxmi Nagar, Bulandshahr, Uttar Pradesh
+            203001
+          </p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <p>
+            <a href="products.html">All products</a><br /><a
+              href="festival-specials.html"
+              >Festival boxes</a
+            ><br /><a href="catering.html">Bulk orders</a>
+          </p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>
+            <a data-shop-phone href="tel:+918279500000"
+              ><span data-shop-phone-text>+91 8279500000</span></a
+            ><br />Open daily until 10 PM
+          </p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 Raghav Sweets and Catering. All rights reserved.
+      </div>
+    </footer>
+    <div class="drawer-backdrop" data-cart-backdrop></div>
+    <aside class="cart-drawer" data-cart-drawer>
+      <div class="drawer-head">
+        <h2>Your cart</h2>
+        <button data-close-cart aria-label="Close">×</button>
+      </div>
+      <div data-cart-items></div>
+      <div class="drawer-total">
+        <span>Subtotal</span><strong data-cart-total>₹0</strong>
+      </div>
+      <a class="btn full" href="checkout.html">Proceed to checkout</a
+      ><button class="btn outline full" data-close-cart>
+        Continue shopping
+      </button>
+    </aside>
+    <div class="toast" data-toast></div>
+    <script src="js/config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
