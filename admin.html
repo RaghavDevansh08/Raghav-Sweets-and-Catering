@@ -67,12 +67,64 @@
         background: #d35400;
         color: white;
       }
+      .toolbar {
+        display: flex;
+
+        gap: 15px;
+
+        margin-bottom: 25px;
+
+        flex-wrap: wrap;
+      }
+
+      .toolbar input {
+        flex: 1;
+
+        padding: 14px;
+
+        border-radius: 10px;
+
+        border: 1px solid #ccc;
+
+        font-size: 16px;
+      }
+
+      .toolbar select {
+        padding: 14px;
+
+        border-radius: 10px;
+
+        font-size: 16px;
+      }
     </style>
   </head>
 
   <body>
     <div class="admin-container">
       <h1 class="admin-title">Raghav Sweets Admin Dashboard</h1>
+      <div class="toolbar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search Order ID, Customer or Phone"
+        />
+
+        <select id="statusFilter">
+          <option value="ALL">All Orders</option>
+
+          <option value="AWAITING_UPI_PAYMENT">Awaiting Payment</option>
+
+          <option value="PAYMENT_VERIFIED">Payment Verified</option>
+
+          <option value="PREPARING">Preparing</option>
+
+          <option value="READY">Ready</option>
+
+          <option value="COMPLETED">Completed</option>
+
+          <option value="CANCELLED">Cancelled</option>
+        </select>
+      </div>
 
       <div class="stats">
         <div class="card">
@@ -90,30 +142,45 @@
           <div class="number" id="revenue">₹0</div>
         </div>
       </div>
+      <div class="analytics-card">
+        <h2>Sales (Last 7 Days)</h2>
 
+        <div class="chart-container">
+          <canvas id="salesChart" width="700" height="400"> </canvas>
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
             <th>Order ID</th>
-
             <th>Customer</th>
-
             <th>Phone</th>
-
             <th>Total</th>
-
             <th>Status</th>
+            <th>View</th>
+            <th>Action</th>
           </tr>
         </thead>
 
         <tbody id="ordersTable">
           <tr>
-            <td colspan="5">No orders yet</td>
+            <td colspan="6">No orders yet</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <!-- Order Details Modal -->
 
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+
+        <h2>Order Details</h2>
+
+        <div id="orderDetails"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/admin.js"></script>
   </body>
 </html>
