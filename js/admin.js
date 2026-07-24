@@ -61,15 +61,21 @@ async function loadOrders() {
   <td>₹${order.total}</td>
 
   <td>${order.status}</td>
-  <td>
+ <td>
     <button onclick="viewOrder('${order.id}')">
         View
     </button>
 </td>
 
-  <td>
+<td>
+    <button onclick="downloadInvoice('${order.id}')">
+        📄 Invoice
+    </button>
+</td>
 
-    <select onchange="updateStatus('${order.id}', this.value)">
+<td>
+
+<select onchange="updateStatus('${order.id}', this.value)">
 
       <option value="">Change Status</option>
 
@@ -264,3 +270,6 @@ async function loadSalesChart() {
   }
 }
 loadSalesChart();
+function downloadInvoice(orderId) {
+  window.open(`${API_BASE}/api/orders/${orderId}/invoice`, "_blank");
+}

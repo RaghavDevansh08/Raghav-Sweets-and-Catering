@@ -8,6 +8,7 @@ import QRCode from "qrcode";
 import { z } from "zod";
 import { pool, initDb } from "./db.js";
 import { productMap } from "./products.js";
+import generateInvoice from "./invoice.js";
 
 const app = express();
 const port = Number(process.env.PORT || 4000);
@@ -239,6 +240,45 @@ app.get("/api/orders/:id", async (req, res, next) => {
       ...order.rows[0],
       items: items.rows,
     });
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get("/api/orders/:id/invoice", async (req, res, next) => {
+  try {
+    const orderResult = await pool.query("SELECT * FROM orders WHERE id=$1", [
+      req.params.id,
+    ]);
+
+    if (!orderResult.rowCount) {
+      return res.status(404).json({
+        error: "Order not found.",
+      });
+    }
+
+    const itemsResult = await pool.query(
+      `
+      SELECT
+        product_name,
+        quantity,
+        unit,
+        unit_price,
+        line_total
+      FROM order_items
+      WHERE order_id=$1
+      `,
+      [req.params.id],
+    );
+
+    const order = {
+      ...orderResult.rows[0],
+      items: itemsResult.rows,
+    };
+
+    const invoicePath = await generateInvoice(order);
+
+    res.download(invoicePath);
   } catch (err) {
     next(err);
   }
