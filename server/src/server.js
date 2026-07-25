@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import verifyRoutes from "./routes/verify.js";
 import rateLimit from "express-rate-limit";
 import QRCode from "qrcode";
 import { z } from "zod";
@@ -357,6 +358,7 @@ app.patch("/api/admin/orders/:id/status", async (req, res, next) => {
   }
 });
 
+app.use("/verify", verifyRoutes);
 app.use((error, _req, res, _next) => {
   console.error(error);
   if (error instanceof z.ZodError)

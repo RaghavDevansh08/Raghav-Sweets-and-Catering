@@ -22,9 +22,10 @@ async function generateInvoice(order) {
 
   const qrPath = path.join(invoicesDir, `${order.id}-qr.png`);
 
-  const qrData = `Order ID: ${order.id}
-Customer: ${order.customer_name}
-Amount: ₹${order.total}`;
+  const BASE_URL =
+    process.env.BASE_URL || "https://raghav-sweets-and-catering.onrender.com";
+
+  const qrData = `${BASE_URL}/verify.html?id=${order.id}`;
 
   await QRCode.toFile(qrPath, qrData, {
     width: 180,
@@ -305,6 +306,15 @@ Amount: ₹${order.total}`;
     align: "center",
   });
 
+  if (GST_ENABLED) {
+    doc.text("GSTIN : 09ABCDE1234F1Z5", {
+      align: "center",
+    });
+
+    doc.text("State : Uttar Pradesh", {
+      align: "center",
+    });
+  }
   doc.moveDown();
 
   doc
@@ -328,8 +338,7 @@ Amount: ₹${order.total}`;
     .fillColor("white")
     .font("Helvetica-Bold")
     .fontSize(22)
-    .text("TAX INVOICE", left, bannerY + 10, {
-      width: right - left,
+    .text(GST_ENABLED ? "GST TAX INVOICE" : "TAX INVOICE", {
       align: "center",
     });
 
@@ -375,6 +384,13 @@ Amount: ₹${order.total}`;
   doc.font("Helvetica-Bold");
   doc.text("Invoice No", left + 15, infoTop + 15);
   doc.text("Invoice Date", left + 15, infoTop + 38);
+  if (GST_ENABLED) {
+    doc.font("Helvetica-Bold");
+    doc.text("Place of Supply:", left + 15, infoTop + 75);
+
+    doc.font("Helvetica");
+    doc.text("Uttar Pradesh", 170, infoTop + 75);
+  }
   doc.text("Order Status", left + 15, infoTop + 61);
 
   doc.font("Helvetica");
@@ -651,7 +667,7 @@ Amount: ₹${order.total}`;
   const paymentTop = doc.y;
 
   doc
-    .roundedRect(left, paymentTop, right - left, 90, 8)
+    .roundedRect(left, paymentTop, right - left, 130, 8)
     .fillAndStroke("white", border);
 
   doc.font("Helvetica").fontSize(11).fillColor(dark);
@@ -665,27 +681,86 @@ Amount: ₹${order.total}`;
   doc.text("Payment Status", left + 15, paymentTop + 65);
   doc.text(order.status, 185, paymentTop + 65);
 
-  doc.y = paymentTop + 115;
+  doc.y = paymentTop + 150;
 
   // ========================================
   // QR CODE
   // ========================================
 
   if (fs.existsSync(qrPath)) {
-    doc.image(qrPath, 425, paymentTop + 8, {
+    // Title
+    doc
+      .font("Helvetica-Bold")
+      .fontSize(11)
+      .fillColor(primary)
+      .text("Invoice Verification", 400, paymentTop + 5, {
+        width: 140,
+        align: "center",
+      });
+
+    // QR Image
+    doc.image(qrPath, 425, paymentTop + 22, {
       width: 90,
     });
 
+    // Caption
     doc
       .font("Helvetica")
       .fontSize(8)
       .fillColor(gray)
-      .text("Scan to Verify Order", 410, paymentTop + 100, {
-        width: 120,
+      .text("Scan to Verify Invoice", 400, paymentTop + 118, {
+        width: 140,
         align: "center",
       });
   }
 
+  doc
+    .font("Helvetica")
+    .fontSize(8)
+    .fillColor(dark)
+    .text(`Invoice : ${order.id}`, 400, paymentTop + 138, {
+      width: 140,
+      align: "center",
+    });
+
+  doc.text(`Status : ${order.status}`, 400, paymentTop + 150, {
+    width: 140,
+    align: "center",
+  });
+
+  doc.text(
+    new Date(order.created_at).toLocaleDateString("en-IN"),
+    400,
+    paymentTop + 162,
+    {
+      width: 140,
+      align: "center",
+    },
+  );
+
+  doc
+    .font("Helvetica")
+    .fontSize(8)
+    .fillColor(dark)
+    .text(`Invoice : ${order.id}`, 400, paymentTop + 138, {
+      width: 140,
+      align: "center",
+    });
+
+  doc.text(`Status : ${order.status}`, 400, paymentTop + 150, {
+    width: 140,
+    align: "center",
+  });
+
+  doc.text(
+    new Date(order.created_at).toLocaleDateString("en-IN"),
+    400,
+    paymentTop + 162,
+    {
+      width: 140,
+      align: "center",
+    },
+  );
   // ============================================================
   // THANK YOU MESSAGE
   // ============================================================
