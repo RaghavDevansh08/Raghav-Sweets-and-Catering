@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Invoice Verification</title>
+
+    <style>
+      body {
+        margin: 0;
+        background: #f5f5f5;
+        font-family: Arial, sans-serif;
+      }
+
+      .card {
+        width: 600px;
+        max-width: 90%;
+        margin: 60px auto;
+
+        background: white;
+
+        border-radius: 12px;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+        padding: 35px;
+      }
+
+      h1 {
+        color: #7d1d17;
+
+        margin-top: 0;
+      }
+
+      .row {
+        margin: 15px 0;
+
+        font-size: 18px;
+      }
+
+      .label {
+        font-weight: bold;
+
+        display: inline-block;
+
+        width: 180px;
+      }
+
+      .status {
+        color: green;
+
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h1>✔ Invoice Verified</h1>
+
+      <div id="invoiceData">Loading...</div>
+    </div>
+
+    <script src="js/verify.js"></script>
+  </body>
+</html>
