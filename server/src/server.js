@@ -41,6 +41,8 @@ app.use(
     limit: 150,
     standardHeaders: true,
     legacyHeaders: false,
+
+    skip: (req) => req.path === "/api/health",
   }),
 );
 app.use(express.json({ limit: "100kb" }));
