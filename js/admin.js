@@ -35,10 +35,37 @@ async function loadOrders() {
 
     document.getElementById("revenue").textContent = "₹" + revenue;
 
+    const searchInput = document.querySelector(
+      'input[placeholder*="Search Order ID"]',
+    );
+
+    const searchText = searchInput
+      ? searchInput.value.trim().toLowerCase()
+      : "";
+
+    const filteredOrders = orders.filter((order) => {
+      return (
+        String(order.id || "")
+          .toLowerCase()
+          .includes(searchText) ||
+        String(order.customer_name || "")
+          .toLowerCase()
+          .includes(searchText) ||
+        String(order.phone || "")
+          .toLowerCase()
+          .includes(searchText) ||
+        String(order.email || "")
+          .toLowerCase()
+          .includes(searchText) ||
+        String(order.status || "")
+          .toLowerCase()
+          .includes(searchText)
+      );
+    });
     // Update table
     const table = document.getElementById("ordersTable");
 
-    if (orders.length === 0) {
+    if (filteredOrders.length === 0) {
       table.innerHTML = `
       <tr>
         <td colspan="5">No orders yet</td>
@@ -48,7 +75,7 @@ async function loadOrders() {
 
     table.innerHTML = "";
 
-    orders.forEach((order) => {
+    filteredOrders.forEach((order) => {
       table.innerHTML += `
 <tr>
 
@@ -272,4 +299,62 @@ async function loadSalesChart() {
 loadSalesChart();
 function downloadInvoice(orderId) {
   window.open(`${API_BASE}/api/orders/${orderId}/invoice`, "_blank");
+}
+
+function renderFilteredOrders(searchText) {
+  const table = document.getElementById("ordersTable");
+
+  const query = searchText.trim().toLowerCase();
+
+  const filteredOrders = allOrders.filter((order) => {
+    return (
+      String(order.id || "")
+        .toLowerCase()
+        .includes(query) ||
+      String(order.customer_name || "")
+        .toLowerCase()
+        .includes(query) ||
+      String(order.phone || "")
+        .toLowerCase()
+        .includes(query) ||
+      String(order.email || "")
+        .toLowerCase()
+        .includes(query) ||
+      String(order.status || "")
+        .toLowerCase()
+        .includes(query)
+    );
+  });
+
+  if (filteredOrders.length === 0) {
+    table.innerHTML = `
+      <tr>
+        <td colspan="5">No matching orders found</td>
+      </tr>
+    `;
+    return;
+  }
+
+  table.innerHTML = "";
+
+  filteredOrders.forEach((order) => {
+    table.innerHTML += `
+      <tr>
+        <td>${order.id}</td>
+        <td>${order.customer_name || "-"}</td>
+        <td>${order.phone || "-"}</td>
+        <td>₹${order.total || 0}</td>
+        <td>${order.status || "-"}</td>
+      </tr>
+    `;
+  });
+}
+const adminSearchInput = document.querySelector(
+  'input[placeholder*="Search Order ID"]',
+);
+
+if (adminSearchInput) {
+  adminSearchInput.addEventListener("input", function () {
+    loadOrders();
+  });
 }
