@@ -3,8 +3,6 @@
 
 A modern and responsive website for Raghav Sweets and Catering, showcasing sweets, namkeen, catering services, festival specials, and an intuitive UPI-based ordering interface. Built with HTML, CSS, and JavaScript.
 =======
-# Raghav Sweets and Catering
-
 A responsive sweets and catering website with a product catalogue, shopping cart, festival gift boxes, bulk-order enquiry, and direct UPI checkout interface.
 
 ## Live Website:
